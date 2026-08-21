@@ -1,0 +1,74 @@
+\documentclass{gbt7713topic}
+
+\input{metadata}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,fit,positioning,shapes.geometric}
+
+% The uploaded framework marks Chapters 6 and 7 as optional. Keep both enabled
+% in the template so the default TOC mirrors the full framework; switch either
+% flag to false when the corresponding validation activity is out of scope.
+\newif\ifReportIncludeSystemValidation
+\ReportIncludeSystemValidationtrue
+\newif\ifReportIncludeApplicationValidation
+\ReportIncludeApplicationValidationtrue
+
+\begin{document}
+
+% Mandatory front cover; the cover is counted but has no printed page number.
+\makecover
+
+% Front matter uses independent Roman page numbering. The optional title page
+% is included by default, so it is page I as specified in 5.2.5.
+\frontmatter
+\makereporttitlepage
+\makereportdocumentation
+\makereportabstracts
+\makereporttoc
+
+% These two elements are optional when the report contains only a few figures,
+% tables, symbols, or abbreviations. Delete the calls if they are unnecessary.
+\makereportlists
+\makereportsymbols{%
+  \begin{tabularx}{\textwidth}{@{}p{8em}X@{}}
+    API & 应用程序编程接口（Application Programming Interface）\\
+    $E$ & 评价指标的期望值，单位按上下文给出\\
+    $n$ & 独立试验次数，无量纲
+  \end{tabularx}
+}
+
+% Main and end matter use continuous Arabic page numbering. The body hierarchy
+% follows the supplied topic-report framework while retaining the GB/T page and
+% typography system. The introduction is numbered 0.
+\mainmatter
+\setcounter{chapter}{-1}
+\include{chapters/00-introduction}
+\include{chapters/01-overview}
+\include{chapters/02-research-progress}
+\include{chapters/03-research-topic-one}
+\include{chapters/04-research-topic-two}
+\include{chapters/05-research-topic-three}
+\ifReportIncludeSystemValidation
+  \include{chapters/06-system-validation}
+\fi
+\ifReportIncludeApplicationValidation
+  \include{chapters/07-application-validation}
+\fi
+\include{chapters/08-summary-outlook}
+
+% GB/T 7713.3 refers bibliography presentation to GB/T 7714. The bundled
+% gbt7714-numerical BibTeX style supplies sequential numeric references.
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{参考文献}
+\bibliographystyle{gbt7714-numerical}
+\bibliography{references}
+
+\include{endmatter/research-achievements}
+
+% Appendices are not part of the supplied framework TOC. Enable them only when
+% supporting material is needed and cited from the main text.
+% \appendix
+% \include{appendices/appendix-a}
+
+\end{document}
+

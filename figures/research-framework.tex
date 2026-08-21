@@ -1,0 +1,163 @@
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  font=\sffamily\scriptsize,
+  line cap=round,
+  line join=round,
+  frame/.style={draw=blue!58, line width=0.65pt},
+  dashframe/.style={draw=blue!58, dashed, line width=0.65pt},
+  layerlabel/.style={
+    draw=gray!35,
+    fill=blue!10,
+    minimum width=1.05cm,
+    minimum height=1.02cm,
+    align=center,
+    font=\sffamily\small
+  },
+  title/.style={font=\sffamily\bfseries\scriptsize, text=red!78!black},
+  band/.style={
+    draw=blue!50,
+    fill=blue!12,
+    line width=0.55pt,
+    align=center,
+    minimum height=0.55cm
+  },
+  model/.style={
+    draw=blue!46,
+    fill=blue!7,
+    line width=0.5pt,
+    rounded corners=1pt,
+    align=center,
+    minimum height=0.72cm,
+    text width=1.83cm
+  },
+  method/.style={
+    draw=blue!48,
+    fill=cyan!8,
+    line width=0.5pt,
+    align=center,
+    minimum height=0.72cm
+  },
+  flow/.style={
+    draw=blue!48,
+    fill=blue!6,
+    line width=0.5pt,
+    rounded corners=1pt,
+    align=center,
+    minimum height=0.72cm,
+    text width=2.35cm
+  },
+  source/.style={
+    draw=blue!42,
+    fill=gray!9,
+    rounded corners=1.5pt,
+    align=center,
+    minimum width=1.85cm,
+    minimum height=0.58cm
+  },
+  arr/.style={-{Latex[length=2.2mm,width=1.6mm]}, draw=blue!52, line width=0.75pt}
+]
+
+% Layer labels
+\node[layerlabel, minimum height=0.78cm] at (0.55,0.55) {多源\\信息};
+\node[layerlabel, minimum height=1.12cm] at (0.55,1.92) {统一\\基础};
+\node[layerlabel, minimum height=4.95cm] at (0.55,5.52) {关键\\技术};
+\node[layerlabel, minimum height=1.12cm] at (0.55,8.90) {测试\\系统};
+\node[layerlabel, minimum height=0.82cm] at (0.55,10.16) {应用\\示范};
+
+% Multi-source information
+\draw[dashframe] (1.25,0.08) rectangle (17.05,1.02);
+\node[source] at (2.45,0.55) {市场行情\\与成交};
+\node[source] at (4.65,0.55) {产品条款\\与现金流};
+\node[source] at (6.85,0.55) {主体信息\\与公司行为};
+\node[source] at (9.05,0.55) {宏观政策\\与利率曲线};
+\node[source] at (11.25,0.55) {公告新闻\\与语义文本};
+\node[source] at (13.45,0.55) {信用事件\\与回收信息};
+\node[source] at (15.65,0.55) {外部课题\\与机构接口};
+
+% Unified contracts and evidence basis
+\draw[frame] (1.25,1.24) rectangle (17.05,2.56);
+\node[title] at (9.15,2.39) {统一时点数据、价值口径与证据契约};
+\node[band, text width=3.2cm] at (3.20,1.80) {as-of 时间与发布时间对齐};
+\node[band, text width=3.2cm] at (7.10,1.80) {\(V_t\)、\(V_{t+h}\)、现金流与 loss basis};
+\node[band, text width=3.2cm] at (11.00,1.80) {全量/合格目录与排除台账};
+\node[band, text width=3.2cm] at (14.90,1.80) {配置、代码、数据与结果哈希};
+
+% Research point 1
+\draw[frame] (1.25,2.82) rectangle (8.84,7.82);
+\node[title] at (5.05,7.63) {研究点一：六类证券担保品估值及价差风险计量};
+
+\node[model] at (2.55,6.82) {\textbf{M1 股票}\\GBSV 条件路径};
+\node[model] at (5.05,6.82) {\textbf{M2 债券}\\现金流与曲线};
+\node[model] at (7.55,6.82) {\textbf{M3 基金}\\NAV 与持仓穿透};
+\node[model] at (2.55,5.77) {\textbf{M4 期货}\\持有成本与期限结构};
+\node[model] at (5.05,5.77) {\textbf{M5 期权}\\IV 曲面与 Greeks};
+\node[model, dashed, draw=red!55] at (7.55,5.77) {\textbf{M6 信用衍生品}\\强度、生存与回收};
+
+\node[band, text width=6.45cm, minimum height=0.68cm] at (5.05,4.78)
+  {产品特有价值路径与现金流机制\\统一生成未来价值、PnL、正损失、VaR 与 ES};
+\node[method, text width=1.85cm] at (2.55,3.65) {朴素基准\\last value};
+\node[method, text width=1.85cm] at (5.05,3.65) {经典理论基准\\产品定价锚};
+\node[method, text width=1.85cm] at (7.55,3.65) {强现代基准\\同样本挑战};
+\node[font=\sffamily\tiny, text=red!70!black] at (7.55,3.05)
+  {M6 真实数据到位前保持阻塞};
+
+% Research point 2
+\draw[frame] (9.08,4.57) rectangle (17.05,7.82);
+\node[title] at (13.07,7.63) {研究点二：受约束的大模型估值及风险增强};
+
+\node[method, fill=purple!9, text width=2.55cm, minimum height=1.03cm] at (11.18,6.66)
+  {\textbf{L1 估值残差增强}\\时点文本、检索证据\\点值/分位数修正};
+\node[method, fill=purple!9, text width=2.55cm, minimum height=1.03cm] at (14.93,6.66)
+  {\textbf{L2 风险状态增强}\\政策不确定性与因子\\损失/VaR 状态门控};
+\draw[arr] (12.75,6.66) -- (13.35,6.66);
+
+\node[band, text width=6.55cm, minimum height=0.62cm] at (13.07,5.62)
+  {时点语义对齐 \(\cdot\) 检索绑定 \(\cdot\) 产品约束 \(\cdot\) 校准门禁 \(\cdot\) 确定性回退};
+\node[dashframe, rounded corners=1pt, minimum width=6.55cm, minimum height=0.52cm, align=center]
+  at (13.07,4.95) {no-text / shuffled / time-shifted 消融识别真实语义增量};
+
+% Research point 3
+\draw[frame] (9.08,2.82) rectangle (17.05,4.35);
+\node[title] at (13.07,4.16) {研究点三：实际市场返回检验与动态监控};
+\node[flow, text width=1.30cm] (r31) at (9.95,3.42) {冻结样本\\五年回放};
+\node[flow, text width=1.30cm] (r32) at (11.55,3.42) {价值/分布\\波动率评价};
+\node[flow, text width=1.30cm] (r33) at (13.15,3.42) {VaR/PnL\\返回检验};
+\node[flow, text width=1.30cm] (r34) at (14.75,3.42) {漂移/异常\\动态监控};
+\node[flow, text width=1.30cm] (r35) at (16.35,3.42) {证据包\\分层结论};
+\draw[arr] (r31.east) -- (r32.west);
+\draw[arr] (r32.east) -- (r33.west);
+\draw[arr] (r33.east) -- (r34.west);
+\draw[arr] (r34.east) -- (r35.west);
+
+% Cross-research arrows
+\draw[arr] (8.84,6.25) -- (9.08,6.25);
+\draw[arr] (13.07,4.57) -- (13.07,4.35);
+\draw[arr] (8.84,3.42) -- (9.08,3.42);
+
+% Test system
+\draw[frame] (1.25,8.06) rectangle (17.05,9.74);
+\node[title] at (9.15,9.56) {研究成果三：证券担保品估值及价差风险测试系统};
+\node[band, text width=3.15cm, minimum height=0.76cm] at (3.20,8.73)
+  {数据目录、资格规则\\冻结快照与版本管理};
+\node[band, text width=3.15cm, minimum height=0.76cm] at (7.10,8.73)
+  {模型注册、训练预测\\回退与质量门禁};
+\node[band, text width=3.15cm, minimum height=0.76cm] at (11.00,8.73)
+  {历史回放、返回检验\\漂移与异常监控};
+\node[band, text width=3.15cm, minimum height=0.76cm] at (14.90,8.73)
+  {权限、审计、接口\\模型卡与证据导出};
+
+% Application and acceptance
+\draw[dashframe] (1.25,9.96) rectangle (17.05,10.75);
+\node[font=\sffamily\bfseries\scriptsize] at (9.15,10.50)
+  {第三方测试与不少于三家机构应用示范};
+\node[font=\sffamily\scriptsize] at (9.15,10.20)
+  {合同验收 \(\cdot\) 科学技能 \(\cdot\) 工程质量 \(\cdot\) 产品覆盖分别判定};
+
+% Main evidence flow
+\draw[arr] (9.15,1.02) -- (9.15,1.24);
+\draw[arr] (9.15,2.56) -- (9.15,2.72) -- (5.05,2.72) -- (5.05,2.82);
+\draw[arr] (13.07,7.82) -- (13.07,8.06);
+\draw[arr] (9.15,9.74) -- (9.15,9.96);
+\end{tikzpicture}
+
