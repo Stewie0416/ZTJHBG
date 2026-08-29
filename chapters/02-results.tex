@@ -1,0 +1,25 @@
+\chapter{结果与讨论}
+
+\section{示例结果}
+
+表\ref{tab:result}使用三线表，表号和表题位于表的上方。表文采用小五号宋体；单位宜集中写入表头，避免在每个数据单元中重复。
+
+\begin{table}[htbp]
+  \centering
+  \caption{示例验证结果}
+  \label{tab:result}
+  \ReportTableText
+  \begin{tabular}{lccc}
+    \toprule
+    指标 & 目标值 & 观测值 & 判定 \\
+    \midrule
+    完整率/\% & $\geq 99.0$ & 99.6 & 通过 \\
+    平均响应时间/ms & $\leq 200$ & 163 & 通过 \\
+    重复试验次数 & $\geq 30$ & 30 & 通过 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{不确定性与限制}
+
+结果解释应区分观测事实、推断和评价结论。对于未达到预期的结果，应说明原因、影响范围和处置方式；不影响正文连贯性的明细数据可移至附录，但每个附录均应在正文中被提及，见附录 A。
